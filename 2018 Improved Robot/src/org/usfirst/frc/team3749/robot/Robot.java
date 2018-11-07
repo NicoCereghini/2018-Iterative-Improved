@@ -84,3 +84,16 @@ public class Robot extends IterativeRobot {
 	public void testPeriodic() {
 	}
 }
+public class FlyWheel
+{
+	public void suck()
+	{
+		
+	}
+	
+	public void blow()
+	{
+		
+	}
+
+}
