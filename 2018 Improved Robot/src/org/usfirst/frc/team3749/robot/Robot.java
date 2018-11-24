@@ -86,6 +86,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void testPeriodic() 
 	{
+		
 	}
 }
 
@@ -146,6 +147,9 @@ public class Arms()
 	{
 		armMotor.setSelectedSensorPosition(0, 0, 100);
 	}
-	Void setRange(min, max)
+	public void setRange(min, max)
+	{
+		
+	}
 	
 }
