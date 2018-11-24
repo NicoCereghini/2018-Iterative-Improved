@@ -47,7 +47,8 @@ public class Robot extends IterativeRobot {
 	 * SendableChooser make sure to add them to the chooser code above as well.
 	 */
 	@Override
-	public void autonomousInit() {
+	public void autonomousInit() 
+	{
 		m_autoSelected = m_chooser.getSelected();
 		// autoSelected = SmartDashboard.getString("Auto Selector",
 		// defaultAuto);
@@ -58,7 +59,8 @@ public class Robot extends IterativeRobot {
 	 * This function is called periodically during autonomous.
 	 */
 	@Override
-	public void autonomousPeriodic() {
+	public void autonomousPeriodic() 
+	{
 		switch (m_autoSelected) {
 			case kCustomAuto:
 				// Put custom auto code here
@@ -74,13 +76,76 @@ public class Robot extends IterativeRobot {
 	 * This function is called periodically during operator control.
 	 */
 	@Override
-	public void teleopPeriodic() {
+	public void teleopPeriodic() 
+	{
 	}
 
 	/**
 	 * This function is called periodically during test mode.
 	 */
 	@Override
-	public void testPeriodic() {
+	public void testPeriodic() 
+	{
 	}
+}
+
+public class Arms()
+{
+	double y; //The y position of the arms in terms of a very large angle? in degrees?
+	
+	Arm(double yPos) // constructor
+	{
+		yPos = y;
+	}
+	
+	public void moveToPos(double pos)
+	{
+		y = pos;
+	}
+	
+		/**
+		 * method armTime moves the robot's arm down or up for a certain amount of time
+		 * @param down - if the arm should go down
+		 * @param seconds - how long the arm moves for
+		 */
+		public void armTime (boolean down, double seconds)
+		{
+			// milliseconds when started
+			double start = System.currentTimeMillis();
+			
+			// as long as the delta time from start to current time is less than seconds * 1000 (to milliseconds)
+			while ((System.currentTimeMillis() - start) < seconds * 1000)
+			{
+				armMotor.set(ControlMode.PercentOutput, 0.2 * (down ? 1 : -1));
+				Timer.delay(0.01);
+			}
+			armMotor.set(ControlMode.PercentOutput, -0.12);
+		}
+	
+	public void moveDown(boolean down, double seconds)
+	{
+		// milliseconds when started
+					double start = System.currentTimeMillis();
+					
+					// as long as the delta time from start to current time is less than seconds * 1000 (to milliseconds)
+					while ((System.currentTimeMillis() - start) < seconds * 1000)
+					{
+						armMotor.set(ControlMode.PercentOutput, 0.2 * (down ? 1 : -1));
+						Timer.delay(0.01);
+					}
+					armMotor.set(ControlMode.PercentOutput, -0.12);
+	}
+	Void setArmPos(double pos)
+	{
+		 
+	}
+	/**
+	 * method reset - sets the encoder value to 0
+	 */
+	public void resetBottom()
+	{
+		armMotor.setSelectedSensorPosition(0, 0, 100);
+	}
+	Void setRange(min, max)
+	
 }
